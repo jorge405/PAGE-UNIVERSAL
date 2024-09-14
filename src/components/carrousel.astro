@@ -4,26 +4,30 @@ interface Props{
 title:String
 }
 
-let index= 0;
+
 
 const {title} = Astro.props
 const img=['../../public/images/Firefly genera una imagen de nuestro sistema solar 81877 (1).jpg','../../public/images/galaxiaViaLactea.webp','../../public/images/galaxiaEnanaMayor.jpg']
-const totalSlide= {img.length}
+let currentIndex= 0;
 
-function moveSlide(direction){
-    index= (index + direction + totalSlide) % totalSlide;
-    document.querySelector('.flex').style.transform = `traslateX(-${index * 100}%)`;
-}
 ---
 
 
 
-    <div class="relative overflow-hidden w-10/12 h-3/6 mx-auto">
-        <div class=" flex transition-transform duration-500 ease-in-out" style="transform: translateX(-index * 100%)">
-            { img.map(item=>(
-                <img src={item} alt="universos" class="w-full h-auto object-contain">
-            ))}
+    <div class="relative w-full max-w-lg mx-auto">
+        <div id="carousel" class="overflow-hidden">
+            <div id="carouselInner" class="flex transition-transform duration-500">
+                {img.map((item,index)=>(
+                    <img src={item} alt={`Foto ${index+1}`} class="w-full h-64 object-cover"/>
+                ))}
+            </div>
         </div>
-        <button class=" absolute top-1/2 left-0 p-4 transform -translate-y-1/2 bg-gray-800 text-white" onClick={()=> moveSlide(-1)}></button>
-        <button class=" absolute top-1/2 right-0 p-4 transform -translate-y-1/2 bg-gray-800 text-white" onClick={()=>moveSlide(1)}></button>
+
+        <!-- Botones de control -->
+        <button id="prevBtn" class="absolute top-1/2 left-0 transform -translate-y-1/2 bg-gray-800 text-white px-4 py-2 rounded-l-md">
+            &#8249;
+        </button>
+        <button id="nextBtn" class="absolute top-1/2 right-0 transform -translate-y-1/2 bg-gray-800 text-white px-4 py-2 rounded-r-md">
+            &#8250;
+        </button>
     </div>
