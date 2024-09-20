@@ -1,0 +1,12 @@
+---
+const planetas=['../../public/images/tierra.jpg','../../public/images/marte.jpg','../../public/images/saturno.jpg','../../public/images/jupiter.jpg','../../public/images/venus.jpg']
+---
+
+
+<div class="relative bg-slate-200 grid grid-cols-5 w-[1120px] lg:max-w-full h-52 my-10 gap-x-4 justify-center mx-auto ">
+    {planetas.map(item=>(
+        <div class="w-full">
+            <img src={item} alt="planetas" class="w-full h-52 object-cover rounded-md">
+        </div>
+    ))}
+</div>

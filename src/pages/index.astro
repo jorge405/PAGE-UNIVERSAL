@@ -1,17 +1,30 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import Card from '../components/Card.astro';
-import Menu from '../components/Menu.astro';
+
 import Carrousel from '../components/carrousel.astro';
+import Planetas from '../components/planetas.astro';
+import Universo from '../components/Universo.astro'
+import Curiosidades from '../components/Curiosidades.astro';
 ---
 
 <Layout title="THE UNIVERSAL">
 	
 	<main>
-		<Carrousel
-		title="Hola mundo">
-		</Carrousel>	
+		
+			<Carrousel
+			title="Hola mundo">
+			</Carrousel>	
+		
+		
+			<Planetas></Planetas>
+		
+		
+			<Universo></Universo>
+			<Curiosidades></Curiosidades>
 	</main>
+	<footer>
+
+	</footer>
 </Layout>
 
 

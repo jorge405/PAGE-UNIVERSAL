@@ -8,26 +8,67 @@ title:String
 
 const {title} = Astro.props
 const img=['../../public/images/Firefly genera una imagen de nuestro sistema solar 81877 (1).jpg','../../public/images/galaxiaViaLactea.webp','../../public/images/galaxiaEnanaMayor.jpg']
-let currentIndex= 0;
+
 
 ---
 
 
 
-    <div class="relative w-full max-w-lg mx-auto">
-        <div id="carousel" class="overflow-hidden">
-            <div id="carouselInner" class="flex transition-transform duration-500">
-                {img.map((item,index)=>(
-                    <img src={item} alt={`Foto ${index+1}`} class="w-full h-64 object-cover"/>
-                ))}
-            </div>
+<div class="relative w-[1120px] lg:max-w-full h-1/4 mx-auto my-5">
+    <div id="carousel" class="overflow-hidden ">
+        <div id="carouselInner" class="flex transition-transform duration-500" style="width: calc(100% * {images.length});">
+            {img.map((item,index)=>(
+                <img src={item} alt={`Foto ${index+1}`} class="w-full h-96 object-cover flex-shrink-0 rounded-md" />
+            ))}
         </div>
-
-        <!-- Botones de control -->
-        <button id="prevBtn" class="absolute top-1/2 left-0 transform -translate-y-1/2 bg-gray-800 text-white px-4 py-2 rounded-l-md">
-            &#8249;
-        </button>
-        <button id="nextBtn" class="absolute top-1/2 right-0 transform -translate-y-1/2 bg-gray-800 text-white px-4 py-2 rounded-r-md">
-            &#8250;
-        </button>
     </div>
+
+    <!-- Botones de control -->
+    <button id="prevBtn" class="absolute top-1/2 left-0 transform -translate-y-1/2 bg-gray-800 text-white px-4 py-2 rounded-l-md">
+        &#8249;
+    </button>
+    <button id="nextBtn" class="absolute top-1/2 right-0 transform -translate-y-1/2 bg-gray-800 text-white px-4 py-2 rounded-r-md">
+        &#8250;
+    </button>
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const img=['../../public/images/Firefly genera una imagen de nuestro sistema solar 81877 (1).jpg','../../public/images/galaxiaViaLactea.webp','../../public/images/galaxiaEnanaMayor.jpg']
+      let currentIndex = 0;
+      const totalImages = img.length;
+      const carouselInner = document.getElementById('carouselInner');
+      const prevBtn = document.getElementById('prevBtn');
+      const nextBtn = document.getElementById('nextBtn');
+      
+      
+  
+      const updateCarousel = () => {
+        const offset = -currentIndex * 100;
+        carouselInner.style.transform = `translateX(${offset}%)`;
+      };
+  
+      const nextSlide = () => {
+        currentIndex = (currentIndex + 1) % totalImages;
+        updateCarousel();
+      };
+  
+      const prevSlide = () => {
+        currentIndex = (currentIndex - 1 + totalImages) % totalImages;
+        updateCarousel();
+      };
+  
+      nextBtn.addEventListener('click', nextSlide);
+      prevBtn.addEventListener('click', prevSlide);
+  
+      // Desplazar automáticamente cada 2 segundos
+      const autoSlide = setInterval(nextSlide, 2000);
+  
+      // Detener el autoSlide cuando el usuario hace clic en los botones
+      prevBtn.addEventListener('click', () => clearInterval(autoSlide));
+      nextBtn.addEventListener('click', () => clearInterval(autoSlide));
+  
+      // Actualizar el carrusel al cargar
+      updateCarousel();
+    });
+  </script>
