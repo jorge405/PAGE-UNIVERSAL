@@ -14,26 +14,29 @@ const img=['../../public/images/Firefly genera una imagen de nuestro sistema sol
 
 
 
-<div class="relative w-[1120px] lg:max-w-full h-1/4 mx-auto my-5">
-    <div id="carousel" class="overflow-hidden ">
+<div class="relative w-full lg:max-w-full h-3/4  mb-5 ">
+    <!--<div id="carousel" class="overflow-hidden ">
         <div id="carouselInner" class="flex transition-transform duration-500" style="width: calc(100% * {images.length});">
             {img.map((item,index)=>(
                 <img src={item} alt={`Foto ${index+1}`} class="w-full h-96 object-cover flex-shrink-0 rounded-md" />
             ))}
-        </div>
+        </div> -->
+        <video src="/universo2.mp4" autoplay loop muted class="w-full h-96 object-cover flex-shrink-0 rounded-md">
+
+        </video>
     </div>
 
     <!-- Botones de control -->
-    <button id="prevBtn" class="absolute top-1/2 left-0 transform -translate-y-1/2 bg-gray-800 text-white px-4 py-2 rounded-l-md">
+    <!--<button id="prevBtn" class="absolute top-1/2 left-0 transform -translate-y-1/2 bg-gray-800 text-white px-4 py-2 rounded-l-md">
         &#8249;
     </button>
     <button id="nextBtn" class="absolute top-1/2 right-0 transform -translate-y-1/2 bg-gray-800 text-white px-4 py-2 rounded-r-md">
         &#8250;
-    </button>
+    </button> -->
 </div>
 
 <script>
-    document.addEventListener('DOMContentLoaded', () => {
+    /*document.addEventListener('DOMContentLoaded', () => {
       const img=['../../public/images/Firefly genera una imagen de nuestro sistema solar 81877 (1).jpg','../../public/images/galaxiaViaLactea.webp','../../public/images/galaxiaEnanaMayor.jpg']
       let currentIndex = 0;
       const totalImages = img.length;
@@ -70,5 +73,5 @@ const img=['../../public/images/Firefly genera una imagen de nuestro sistema sol
   
       // Actualizar el carrusel al cargar
       updateCarousel();
-    });
+    }); */
   </script>
